@@ -27,4 +27,5 @@ Public Shared Function ChangeStringSQLPaging(ByVal stbSql As String, ByVal Page 
         End With
         Return stbNew.ToString()
 
+		
     End Function
