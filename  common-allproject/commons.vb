@@ -29,3 +29,16 @@ Public Shared Function ChangeStringSQLPaging(ByVal stbSql As String, ByVal Page 
 
 		
     End Function
+	'--------------------------
+	 Public Shared Function encryptData(ByVal data As String) As Byte()
+            Dim md5Hasher As New System.Security.Cryptography.MD5CryptoServiceProvider()
+            Dim hashedBytes As Byte()
+            Dim encoder As New System.Text.UTF8Encoding()
+            hashedBytes = md5Hasher.ComputeHash(encoder.GetBytes(data))
+            Return hashedBytes
+        End Function
+
+        Public Shared Function md5(ByVal data As String) As String
+            Return BitConverter.ToString(encryptData(data)).Replace("-", "").ToLower()
+        End Function
+		'-------------------------------------
