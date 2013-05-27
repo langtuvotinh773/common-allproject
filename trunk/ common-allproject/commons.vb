@@ -114,3 +114,9 @@
             Return BitConverter.ToString(encryptData(data)).Replace("-", "").ToLower()
         End Function
 '-------------------------------------
+'Sort column in datatable
+	Dim DataTableNew As DataTable = New DataTable
+	DataTableNew = MyDataTable.Clone
+	Dim query = (From c In MyDataTable.AsEnumerable Order By c.Field(Of String)("ICD10_CODE") Ascending)
+	query.CopyToDataTable(DataTableNew, LoadOption.OverwriteChanges)
+				
