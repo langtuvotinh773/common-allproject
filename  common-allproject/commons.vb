@@ -29,6 +29,7 @@
         Return stbNew.ToString()
 
 		
+		
     End Function
 '-----------------------------------------------------------
 	Public Function Paging(ByVal stbSql As String, ByVal Page As Integer, Optional ByVal RecordNumber As Integer = 20) As String
