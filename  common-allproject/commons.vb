@@ -120,4 +120,37 @@
 	DataTableNew = MyDataTable.Clone
 	Dim query = (From c In MyDataTable.AsEnumerable Order By c.Field(Of String)("ICD10_CODE") Ascending)
 	query.CopyToDataTable(DataTableNew, LoadOption.OverwriteChanges)
-				
+'--- convert Int
+	if integer.TryParse(number,nothing) then
+	End If
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
