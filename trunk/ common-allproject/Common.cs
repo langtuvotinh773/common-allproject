@@ -11,3 +11,67 @@ public string bodau(string accented)
             string strFormD = accented.Normalize(System.Text.NormalizationForm.FormD);
             return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
 		}
+//--------------------------------------------------
+public class StringUtil
+
+{
+
+    private static readonly string[] VietnameseSigns = new string[]
+
+    {
+
+        "aAeEoOuUiIdDyY",
+
+        "áà??ãâ?????a?????",
+
+        "ÁÀ??ÃÂ?????A?????",
+
+        "éè???ê?????",
+
+        "ÉÈ???Ê?????",
+
+        "óò??õô?????o?????",
+
+        "ÓÒ??ÕÔ?????O?????",
+
+        "úù??uu?????",
+
+        "ÚÙ??UU?????",
+
+        "íì??i",
+
+        "ÍÌ??I",
+
+        "d",
+
+        "Ğ",
+
+        "ı????",
+
+        "İ????"
+
+    };
+
+ 
+
+    public static string RemoveSign4VietnameseString(string str)
+
+    {
+
+        //tien hanh thay the bo dau cho chuoi
+
+        for (int i = 1; i < VietnameseSigns.Length; i++)
+
+        {
+
+            for (int j = 0; j < VietnameseSigns[i].Length; j++)
+
+                str = str.Replace(VietnameseSigns[i][j], VietnameseSigns[0][i - 1]);
+
+        }
+
+        return str;
+
+    }
+
+}
