@@ -75,3 +75,47 @@ public class StringUtil
     }
 
 }
+///////////////////////////////// START Foreach Datatable IN VIEW MVC
+/// View  (w/ Model strongly typed as System.Data.DataTable)
+<table border="1" cellpadding="5">
+<thead>
+   <tr>
+      @foreach (System.Data.DataColumn col in Model.Columns)
+      {
+         <th>@col.Caption</th>
+      }
+   </tr>
+</thead>
+<tbody>
+@foreach(System.Data.DataRow row in Model.Rows)
+{
+   <tr>
+      @foreach (var cell in row.ItemArray)
+      {
+         <td>@cell.ToString()</td>
+      }
+   </tr>
+}      
+</tbody>
+/// Controller
+public ActionResult Index()
+{
+    ViewData["Message"] = "Welcome to ASP.NET MVC!";
+
+    DataTable dt = new DataTable("MyTable");
+    dt.Columns.Add(new DataColumn("Col1", typeof(string)));
+    dt.Columns.Add(new DataColumn("Col2", typeof(string)));
+    dt.Columns.Add(new DataColumn("Col3", typeof(string)));
+
+    for (int i = 0; i < 3; i++)
+    {
+        DataRow row = dt.NewRow();
+        row["Col1"] = "col 1, row " + i;
+        row["Col2"] = "col 2, row " + i;
+        row["Col3"] = "col 3, row " + i;
+        dt.Rows.Add(row);
+    }
+
+    return View(dt); //passing the DataTable as my Model
+}
+///////////////////////////////// END Foreach Datatable IN VIEW MVC
