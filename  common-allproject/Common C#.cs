@@ -76,7 +76,9 @@ public class StringUtil
 
 }
 ///////////////////////////////// START Foreach Datatable IN VIEW MVC
-/// View  (w/ Model strongly typed as System.Data.DataTable)
+/// View  
+@model System.Data.DataTable
+@using System.Data; 
 <table border="1" cellpadding="5">
 <thead>
    <tr>
